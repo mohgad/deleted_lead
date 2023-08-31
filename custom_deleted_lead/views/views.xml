@@ -1,0 +1,71 @@
+<odoo>
+	<data>
+		<record id="action_custom_deleted_lead" model="ir.actions.act_window">
+            <field name="name">Deleted Leads</field>
+            <field name="res_model">custom.deleted.lead</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('lead_name', '!=', False)]</field>
+        </record>
+
+        <!-- Define Menu Item -->
+        <menuitem id="menu_custom_deleted_lead" name="Deleted Leads"
+                  parent="crm.crm_menu_root" action="action_custom_deleted_lead"/>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="custom_deleted_lead.list">
+      <field name="name">custom_deleted_lead list</field>
+      <field name="model">custom.deleted.lead</field>
+      <field name="arch" type="xml">
+        <tree>
+          
+          <field name="lead_name"/>
+          <field name="deleted_by"/>
+          <field name="time"/>
+        </tree>
+      </field>
+    </record>
+    
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="custom_deleted_lead.action_window">
+      <field name="name">custom_deleted_lead window</field>
+      <field name="res_model">custom_deleted_lead.custom_deleted_lead</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="custom_deleted_lead.action_server">
+      <field name="name">custom_deleted_lead server</field>
+      <field name="model_id" ref="model_custom_deleted_lead_custom_deleted_lead"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="custom_deleted_lead" id="custom_deleted_lead.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="custom_deleted_lead.menu_1" parent="custom_deleted_lead.menu_root"/>
+    <menuitem name="Menu 2" id="custom_deleted_lead.menu_2" parent="custom_deleted_lead.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="custom_deleted_lead.menu_1_list" parent="custom_deleted_lead.menu_1"
+              action="custom_deleted_lead.action_window"/>
+    <menuitem name="Server to list" id="custom_deleted_lead" parent="custom_deleted_lead.menu_2"
+              action="custom_deleted_lead.action_server"/>
+    -->
+  </data>
+</odoo>
